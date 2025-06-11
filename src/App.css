@@ -1,3 +1,18 @@
+
+.cardPersona{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2c2c2c;
+  margin:8px;
+  border-radius: 8px;
+  padding:5px;
+}
+
+h4{
+  margin:0px;
+}
+
 a{
   margin:10px;
 }
