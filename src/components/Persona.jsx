@@ -5,6 +5,9 @@ const Persona=({people})=>{
     const [msjPersonalizado,setMsjPersonalizado]=useState("mayor de edad");
     const {id} = useParams();
     const Persona = people[id];
+    if(!Persona){
+        return <h1>Persona no encontrada</h1>
+    }
     if(Persona.edad<18){
         setMsjPersonalizado("menor de edad");
     }
