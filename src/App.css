@@ -1,4 +1,17 @@
+.listados{
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+}
 
+.ventanaAutoScroll{
+  overflow-y: auto;
+  max-height: 300px;
+  padding: 10px;
+}
+.ventanaAutoScroll::-webkit-scrollbar{
+  display: none;
+}
 .cardPersona{
   display: flex;
   align-items: center;
@@ -18,7 +31,7 @@ a{
 }
 
 nav{
-  width:50%;
+  width:60%;
   display: flex;
   justify-content: space-around;
   background-color: rgb(5, 31, 39);

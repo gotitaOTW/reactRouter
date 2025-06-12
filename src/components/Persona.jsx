@@ -1,8 +1,7 @@
 import React, { useState } from "react"
-import people from './people.json'
 import { useParams } from "react-router-dom"
 
-const Persona=()=>{
+const Persona=({people})=>{
     const [msjPersonalizado,setMsjPersonalizado]=useState("mayor de edad");
     const {id} = useParams();
     const Persona = people[id];
@@ -19,4 +18,4 @@ const Persona=()=>{
     )
 }
 
-export {Persona}
+export default Persona

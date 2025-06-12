@@ -1,34 +1,63 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import ListaPersonas from "./ListaPersonas";
 
-const Estadisticas=()=>{
-    const total=people.length;
-    const [sumaEdades,setSumaEdades]=useState(0);
+
+const Estadisticas=({people})=>{
+  
+    const [totalDePersonas,setTotalDePersonas]=useState(0);//total de personas
     const [cantPersonasMayores35,setCantPersonasMayores35]=useState(0);//cant mayores a 35
+    const [mayoresDeEdad,setMayoresDeEdad]=useState([]);
+    const [menoresDeEdad,setMenoresDeEdad]=useState([]);
+    const [promedio,setPromedio]=useState(0);
 
-    people.map((persona) => {
-        setSumaEdades(sumaEdades+persona.edad);
-    
-        if (persona.edad > 35) {
-            setCantPersonasMayores35(cantPersonasMayores35+1);  
+    useEffect(()=>{
+      const total=people.length;
+      let mayores35=0;
+      let sumaEdades=0;
+      const mayores=[];
+      const menores=[];
+      people.forEach((persona)=>{
+        if(persona.edad>=18){
+          mayores.push(persona);
+          if(persona.edad>35){mayores35=mayores35+1;}
         }
-    
-        if (persona.edad > edadMax) {
-          edadMax = persona.edad;
-          personasMax = [persona];
-        } else if (persona.edad === edadMax) {
-          personasMax.push(persona);
+        else{
+          menores.push(persona);
         }
-    
-        if (persona.edad < edadMin) {
-          edadMin = persona.edad;
-          personasMin = [persona];
-        } else if (persona.edad === edadMin) {
-          personasMin.push(persona);
-        }
+        sumaEdades=sumaEdades+persona.edad;
+      });
+      setPromedio((sumaEdades/total).toFixed(0));
+      setTotalDePersonas(total);
+      setMayoresDeEdad(mayores);
+      setMenoresDeEdad(menores);
+      setCantPersonasMayores35(mayores35);
+    },[people]);
 
-        const menoresDe35 = people.filter(p => !mayoresDe35.includes(p));
-        const promedio = (sumaEdades / total).toFixed(2);//promedio
-    return <h1>Estas son las estadísticas</h1>
+    return(
+      <>
+      <h1>{totalDePersonas} personas</h1>
+      <h2>{cantPersonasMayores35} mayores de 35</h2>
+      <h2>Edad promedio: {promedio} años</h2>
+
+      <div className="listados">
+
+        <div className="listado">
+          <h1>Mayores</h1>
+          <div className="ventanaAutoScroll">
+            <ListaPersonas lista={mayoresDeEdad}/> 
+          </div>
+        </div>
+
+        <div className="listado">
+          <h1>Menores</h1>
+          <div className="ventanaAutoScroll">
+            <ListaPersonas lista={menoresDeEdad}/> 
+          </div>
+        </div>
+
+      </div>
+      </>
+    )
 }
 
-export {Estadisticas}
+export default Estadisticas;
