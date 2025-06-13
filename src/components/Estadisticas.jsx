@@ -36,7 +36,7 @@ const Estadisticas=({people})=>{
     return(
       <>
       <h1>{totalDePersonas} personas</h1>
-      <h2>{cantPersonasMayores35} mayores de 35</h2>
+      <h2>{cantPersonasMayores35} mayores de 35 años</h2>
       <h2>Edad promedio: {promedio} años</h2>
 
       <div className="listados">

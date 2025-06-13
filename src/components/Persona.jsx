@@ -1,21 +1,30 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 const Persona=({people})=>{
-    const [msjPersonalizado,setMsjPersonalizado]=useState("mayor de edad");
+    const [msjPersonalizado,setMsjPersonalizado]=useState("");
     const {id} = useParams();
-    const Persona = people[id];
-    if(!Persona){
+    const persona = people[id];
+    if(persona==null){
         return <h1>Persona no encontrada</h1>
     }
-    if(Persona.edad<18){
-        setMsjPersonalizado("menor de edad");
+    else{
+      useEffect(()=>{
+        if(persona.edad<18)
+        {
+            setMsjPersonalizado("menor de edad")
+        }
+        else{
+            setMsjPersonalizado("mayor de edad")
+        }
+    },[])
     }
+    
     return(
     <>
-        <h1>{Persona.nombre}</h1>
-        <h3>Edad: {Persona.edad}</h3>
-        <h3>Email: {Persona.email}</h3>
+        <h1>{persona.nombre}</h1>
+        <h3>Edad: {persona.edad}</h3>
+        <h3>Email: {persona.email}</h3>
         <h3>Es {msjPersonalizado}</h3>
     </>
     )

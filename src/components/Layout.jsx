@@ -9,6 +9,7 @@ const Layout = () => {
                 <Link to="/contacto">Contacto</Link>
             </nav>
             <Outlet />
+            <footer>© García Salmaso.</footer>
         </>
     )
 }

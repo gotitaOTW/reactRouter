@@ -1,3 +1,47 @@
+form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+form label {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #444;
+}
+
+input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+p {
+  margin: 0.5rem 0;
+  color: crimson;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+
+
 .listados{
   display: flex;
   justify-content: space-evenly;
